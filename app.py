@@ -4,47 +4,51 @@
 # Scissors beat paper.
 # Paper beats rock.
 # Your interaction in the game will be through the console or Terminal.
-
+# By the end of each round, the player can choose whether to play again.
+# Display the player's score at the end of the game.
 
 import random
-# Create a list of play options
-t = ["Rock", "Paper", "Scissors"]
-# Assign a random play to the computer
-computer = t[random.randint(0,2)]
-# Set player to False
-player = False
-while player == False:
-    # Set player to True
-    player = input("Rock, Paper, Scissors?")
-    if player == computer:
-        print("Tie!")
-    elif player == "Rock":
-        if computer == "Paper":
-            print("You lose!", computer, "covers", player)
+
+def game():
+    print("Welcome to Rock, Paper, Scissors!")
+    player_score = 0
+    computer_score = 0
+    while True:
+        player = input("Rock, Paper, or Scissors? ").lower()
+        computer = random.choice(["rock", "paper", "scissors"])
+        print(f"Computer: {computer}")
+        if player == computer:
+            print("It's a tie!")
+        elif player == "rock":
+            if computer == "scissors":
+                print("You win!")
+                player_score += 1
+            else:
+                print("You lose!")
+                computer_score += 1
+        elif player == "scissors":
+            if computer == "paper":
+                print("You win!")
+                player_score += 1
+            else:
+                print("You lose!")
+                computer_score += 1
+        elif player == "paper":
+            if computer == "rock":
+                print("You win!")
+                player_score += 1
+            else:
+                print("You lose!")
+                computer_score += 1
         else:
-            print("You win!", player, "smashes", computer)
-    elif player == "Paper":
-        if computer == "Scissors":
-            print("You lose!", computer, "cut", player)
-        else:
-            print("You win!", player, "covers", computer)
-    elif player == "Scissors":
-        if computer == "Rock":
-            print("You lose...", computer, "smashes", player)
-        else:
-            print("You win!", player, "cut", computer)
-    else:
-        print("That's not a valid play. Check your spelling!")
-    # player was set to True, but we want it to be False so the loop continues
-    player = False
-    computer = t[random.randint(0,2)]
+            print("Invalid input!")
+        print(f"Player: {player_score} | Computer: {computer_score}")
+        if input("Play again? (y/n): ") != "y":
+            print("Thanks for playing!")
+            break
 
+game()
 
-
- 
-
- 
-
-
- 
+# Run the code in the terminal
+# python app.py
 
