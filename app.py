@@ -68,4 +68,8 @@ def game():
     print("Player: ", player_score)
     print("Computer: ", computer_score)
 
+
+game()
+
+
  
